@@ -1,0 +1,81 @@
+.form {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-4);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.form:focus-within {
+  border-color: var(--color-border-focus);
+  box-shadow: var(--shadow-md);
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.textarea {
+  width: 100%;
+  border: none;
+  resize: none;
+  background: transparent;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-base);
+  min-height: 80px;
+  outline: none;
+  overflow: hidden;
+}
+
+.textarea::placeholder {
+  color: var(--color-text-tertiary);
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--spacing-2);
+  border-top: 1px solid var(--color-border);
+}
+
+.submitButton {
+  background-color: var(--color-accent);
+  color: var(--color-surface);
+  padding: var(--spacing-2) var(--spacing-5);
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  font-size: var(--font-size-sm);
+  transition: opacity var(--transition-base), transform var(--transition-fast);
+}
+
+.submitButton:not(:disabled):hover {
+  opacity: 0.9;
+}
+
+.submitButton:not(:disabled):active {
+  transform: scale(0.98);
+}
+
+.submitButton:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}

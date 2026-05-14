@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-12) var(--spacing-4);
+  text-align: center;
+}
+
+.text {
+  color: var(--color-text-tertiary);
+  font-size: var(--font-size-base);
+  font-style: italic;
+  letter-spacing: 0.02em;
+}

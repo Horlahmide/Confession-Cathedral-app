@@ -1,0 +1,14 @@
+.counter {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  transition: color var(--transition-base);
+  user-select: none;
+}
+
+.nearLimit {
+  color: var(--color-text-secondary);
+}
+
+.atLimit {
+  color: var(--color-error);
+}
