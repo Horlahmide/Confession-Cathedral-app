@@ -84,7 +84,9 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   opacity: 0.6;
-  transition: opacity var(--transition-fast), color var(--transition-fast);
+  transition:
+    opacity var(--transition-fast),
+    color var(--transition-fast);
 }
 
 .actionBtn:hover {
