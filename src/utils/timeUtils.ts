@@ -1,6 +1,8 @@
-export function getRelativeTimeString(date: Date | number): string {
+const rtf = new Intl.RelativeTimeFormat(undefined, { numeric: "auto" });
+
+export function getRelativeTimeString(date: Date | number, now: number = Date.now()): string {
   const timeMs = typeof date === "number" ? date : date.getTime();
-  const deltaSeconds = Math.round((Date.now() - timeMs) / 1000);
+  const deltaSeconds = Math.round((now - timeMs) / 1000);
   const cutoffs = [
     60,
     3600,
@@ -21,7 +23,6 @@ export function getRelativeTimeString(date: Date | number): string {
   ];
   const unitIndex = cutoffs.findIndex(cutoff => cutoff > Math.abs(deltaSeconds));
   const divider = unitIndex ? cutoffs[unitIndex - 1] : 1;
-  const rtf = new Intl.RelativeTimeFormat("en", { numeric: "auto" });
   
   if (Math.abs(deltaSeconds) < 60) {
     return "Just now";

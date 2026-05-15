@@ -6,13 +6,13 @@ interface CharacterCounterProps {
 }
 
 export function CharacterCounter({ currentLength, maxLength }: CharacterCounterProps) {
-  const isNearLimit = currentLength >= maxLength * 0.9;
+  const isNearLimit = currentLength >= maxLength * 0.9 && currentLength < maxLength;
   const isAtLimit = currentLength >= maxLength;
   
   return (
     <div 
-      className={`${styles.counter} ${isAtLimit ? styles.atLimit : isNearLimit ? styles.nearLimit : ''}`}
-      aria-live="polite"
+      className={`${styles.counter} ${isNearLimit ? styles.nearLimit : ''} ${isAtLimit ? styles.atLimit : ''}`}
+      aria-live={currentLength >= maxLength * 0.9 ? 'polite' : 'off'}
     >
       {currentLength}/{maxLength}
     </div>

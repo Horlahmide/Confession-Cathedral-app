@@ -1,50 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap');
+
 :root {
-  /* Colors - Soft Minimalism */
-  --color-background: #fcfaf8;
+  /* Colors - Ethereal Clarity */
+  --color-background: #f7f9fb;
   --color-surface: #ffffff;
-  --color-text-primary: #2c2a29;
-  --color-text-secondary: #737373;
-  --color-text-tertiary: #a3a3a3;
-  --color-border: #e5e2de;
-  --color-border-focus: #c2beb8;
-  --color-accent: #2c2a29; /* Restrained accent */
-  --color-error: #c96a6a;
+  --color-surface-dim: #d8dadc;
+  --color-on-surface: #191c1e;
+  --color-on-surface-variant: #44474a;
   
-  /* Typography */
-  --font-family-base: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --font-size-sm: 0.875rem;
-  --font-size-base: 1rem;
-  --font-size-lg: 1.125rem;
-  --font-size-xl: 1.25rem;
-  --font-size-2xl: 1.5rem;
+  --color-primary: #000101;
+  --color-on-primary: #ffffff;
   
-  --line-height-tight: 1.2;
-  --line-height-base: 1.5;
-  --line-height-relaxed: 1.7;
+  --color-secondary: #595f66;
+  --color-outline-variant: #c5c6ca;
+  
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+  
+  --color-input-bg: #f1f4f6;
+  
+  /* Typography - Manrope */
+  --font-family-base: 'Manrope', sans-serif;
   
   /* Spacing */
-  --spacing-1: 0.25rem;
-  --spacing-2: 0.5rem;
-  --spacing-3: 0.75rem;
-  --spacing-4: 1rem;
-  --spacing-5: 1.25rem;
-  --spacing-6: 1.5rem;
-  --spacing-8: 2rem;
-  --spacing-10: 2.5rem;
-  --spacing-12: 3rem;
-  --spacing-16: 4rem;
-
-  /* Shadows and Borders */
+  --spacing-unit: 8px;
+  --spacing-1: 8px;
+  --spacing-2: 16px;
+  --spacing-3: 24px;
+  --spacing-4: 32px;
+  --spacing-5: 40px;
+  --spacing-6: 48px;
+  --spacing-10: 80px;
+  
+  /* Shape */
   --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.02), 0 2px 4px rgba(0, 0, 0, 0.02);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.03), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+  --radius-default: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Shadows - Ambient & Soft */
+  --shadow-ambient: 0 10px 40px rgba(0, 0, 0, 0.03);
+  --shadow-focus: 0 0 0 2px var(--color-background), 0 0 0 4px var(--color-on-surface);
   
   /* Transitions */
+  --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 * {
@@ -56,11 +58,17 @@
 html, body {
   min-height: 100vh;
   background-color: var(--color-background);
-  color: var(--color-text-primary);
+  color: var(--color-on-surface);
   font-family: var(--font-family-base);
-  line-height: var(--line-height-relaxed);
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4 {
+  color: var(--color-primary);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
 }
 
 button, input, textarea {
@@ -83,14 +91,16 @@ a {
   text-decoration: none;
 }
 
-/* Base fade-in animation for global use */
+/* Base animations */
 @keyframes fadeIn {
-  from {
+  0% {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(20px) scale(0.98);
+    filter: blur(4px);
   }
-  to {
+  100% {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
+    filter: blur(0);
   }
 }

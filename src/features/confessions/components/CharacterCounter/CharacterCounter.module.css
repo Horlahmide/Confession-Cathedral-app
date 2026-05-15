@@ -1,12 +1,14 @@
 .counter {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-tertiary);
-  transition: color var(--transition-base);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-on-surface-variant);
+  transition: color var(--transition-fast);
   user-select: none;
+  letter-spacing: 0.05em;
 }
 
 .nearLimit {
-  color: var(--color-text-secondary);
+  color: var(--color-secondary);
 }
 
 .atLimit {

@@ -2,13 +2,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: var(--spacing-12) var(--spacing-4);
+  padding: var(--spacing-10) var(--spacing-3);
   text-align: center;
 }
 
 .text {
-  color: var(--color-text-tertiary);
-  font-size: var(--font-size-base);
+  color: var(--color-on-surface-variant);
+  font-size: 18px;
   font-style: italic;
   letter-spacing: 0.02em;
+  opacity: 0.8;
 }

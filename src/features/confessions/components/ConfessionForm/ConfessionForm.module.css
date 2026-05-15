@@ -1,18 +1,18 @@
 .form {
   background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   padding: var(--spacing-4);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-ambient);
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-3);
-  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+  gap: var(--spacing-4);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
 }
 
-.form:focus-within {
-  border-color: var(--color-border-focus);
-  box-shadow: var(--shadow-md);
+.title {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: var(--spacing-1);
 }
 
 .visuallyHidden {
@@ -28,8 +28,15 @@
 }
 
 .inputWrapper {
-  display: flex;
-  flex-direction: column;
+  background-color: var(--color-input-bg);
+  border-radius: var(--radius-default);
+  padding: var(--spacing-3);
+  transition: background-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.inputWrapper:focus-within {
+  background-color: var(--color-surface);
+  box-shadow: 0 0 0 1px var(--color-primary);
 }
 
 .textarea {
@@ -37,33 +44,34 @@
   border: none;
   resize: none;
   background: transparent;
-  color: var(--color-text-primary);
-  font-size: var(--font-size-lg);
-  line-height: var(--line-height-base);
-  min-height: 80px;
+  color: var(--color-on-surface);
+  font-size: 18px;
+  line-height: 1.6;
+  min-height: 120px;
   outline: none;
   overflow: hidden;
 }
 
 .textarea::placeholder {
-  color: var(--color-text-tertiary);
+  color: var(--color-on-surface-variant);
+  opacity: 0.7;
 }
 
 .footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: var(--spacing-2);
-  border-top: 1px solid var(--color-border);
 }
 
 .submitButton {
-  background-color: var(--color-accent);
-  color: var(--color-surface);
-  padding: var(--spacing-2) var(--spacing-5);
-  border-radius: var(--radius-md);
-  font-weight: 500;
-  font-size: var(--font-size-sm);
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  height: 48px;
+  padding: 0 var(--spacing-4);
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.02em;
   transition: opacity var(--transition-base), transform var(--transition-fast);
 }
 
@@ -76,6 +84,6 @@
 }
 
 .submitButton:disabled {
-  opacity: 0.4;
+  opacity: 0.3;
   cursor: not-allowed;
 }

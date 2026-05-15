@@ -1,6 +1,6 @@
-import { useState, useRef, useEffect } from 'react';
-import { CharacterCounter } from '../CharacterCounter/CharacterCounter';
-import styles from './ConfessionForm.module.css';
+import { useState, useRef, useEffect } from "react";
+import { CharacterCounter } from "../CharacterCounter/CharacterCounter";
+import styles from "./ConfessionForm.module.css";
 
 interface ConfessionFormProps {
   onSubmit: (text: string) => void;
@@ -9,7 +9,7 @@ interface ConfessionFormProps {
 const MAX_LENGTH = 280;
 
 export function ConfessionForm({ onSubmit }: ConfessionFormProps) {
-  const [text, setText] = useState('');
+  const [text, setText] = useState("");
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const isInvalid = text.trim().length === 0 || text.length > MAX_LENGTH;
@@ -17,26 +17,29 @@ export function ConfessionForm({ onSubmit }: ConfessionFormProps) {
   // Auto-resize textarea
   useEffect(() => {
     if (textareaRef.current) {
-      textareaRef.current.style.height = 'auto';
+      textareaRef.current.style.height = "auto";
       textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
     }
   }, [text]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (isInvalid) return;
+    if (isInvalid) {
+      alert("Please enter a valid confession");
+      return;
+    }
 
     onSubmit(text);
-    setText('');
-    
+    setText("");
+
     // Reset textarea height
     if (textareaRef.current) {
-      textareaRef.current.style.height = 'auto';
+      textareaRef.current.style.height = "auto";
     }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) {
+    if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
       e.preventDefault();
       handleSubmit(e);
     }
@@ -47,6 +50,8 @@ export function ConfessionForm({ onSubmit }: ConfessionFormProps) {
       <label htmlFor="confession-input" className={styles.visuallyHidden}>
         Write your confession
       </label>
+
+      <h2 className={styles.title}>What's weighing on your mind?</h2>
       
       <div className={styles.inputWrapper}>
         <textarea
@@ -56,17 +61,17 @@ export function ConfessionForm({ onSubmit }: ConfessionFormProps) {
           value={text}
           onChange={(e) => setText(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder="What's weighing on your mind?"
-          maxLength={MAX_LENGTH + 50} // Allow typing past limit slightly to show error state, but CharacterCounter handles limit
+          placeholder="Speak your truth into the silence..."
+          maxLength={MAX_LENGTH}
           rows={3}
         />
       </div>
 
       <div className={styles.footer}>
         <CharacterCounter currentLength={text.length} maxLength={MAX_LENGTH} />
-        
-        <button 
-          type="submit" 
+
+        <button
+          type="submit"
           className={styles.submitButton}
           disabled={isInvalid}
         >
